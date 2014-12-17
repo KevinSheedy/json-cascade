@@ -1,1 +1,1 @@
-json-cascade is a pure json, cascading template library for browser or node.js.
+json-cascade is a pure json cascading template library for browser or node.js

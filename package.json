@@ -4,7 +4,8 @@
   "description": "pure json cascading template library for browser or node.js",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine-node ./test"
+    "test": "./node_modules/.bin/jasmine-node ./test",
+    "browser": "phantomjs test/run-jasmine.js test/jasmine.html"
   },
   "repository": {
     "type": "git",
