@@ -1,0 +1,2 @@
+"use strict";(function(){var e=this,r=e.jsonCascade,o=function(){return""};o.noConflict=function(){return e.jsonCascade=r,o},"undefined"!=typeof exports?("undefined"!=typeof module&&module.exports&&(exports=module.exports=o),exports.jsonCascade=o):e.jsonCascade=o;var n="undefined"!=typeof require,s=e._;if("undefined"==typeof s){if(!n)throw new Error("mymodule requires underscore, see http://underscorejs.org");s=require("underscore")}}).call(this);
+//# sourceMappingURL=json-cascade-min.map

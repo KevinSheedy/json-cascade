@@ -1,11 +1,12 @@
 {
   "name": "json-cascade",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "pure json cascading template library for browser or node.js",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/jasmine-node ./test",
-    "browser": "phantomjs test/run-jasmine.js test/jasmine.html"
+    "browser": "phantomjs test/run-jasmine.js test/jasmine.html",
+    "build": "uglifyjs json-cascade.js -c \"evaluate=false\" -m --source-map json-cascade-min.map -o json-cascade-min.js"
   },
   "repository": {
     "type": "git",
