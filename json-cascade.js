@@ -12,8 +12,21 @@
 
 		var template = arguments[0];
 
+		if(arguments.length == 1)
+			return deepcopy(template);
+
+		// Template is a primitive (or null)
+		if(!_.isObject(template))
+			return deepcopy(arguments[arguments.length -1]);
+
 		// Can't use slice on arguments
-		var models = subsetOfArguments(1, arguments);
+		var models = subsetOfArguments(1, arguments) || [];
+
+		if(isArrayTemplate(template))
+			return arrayCascade(template, models);
+		else
+			return arrayCascade(template, models);
+
 	}
 
 	jsonCascade.noConflict = function() {
@@ -42,18 +55,37 @@
 		else throw new Error('mymodule requires underscore, see http://underscorejs.org');
 	}
 
+	var deepcopy = root.deepcopy
+
+	if( typeof _ === 'undefined' ) {
+		if( has_require ) {
+			deepcopy = require('deepcopy')
+		}
+		else throw new Error('mymodule requires deepcopy, see https://www.npmjs.com/package/deepcopy');
+	}
+
 
 
 	function isArrayTemplate(val) {
-		return is.array(val) && val.length == 1 && is.object(val[0]);
+		return _.isArray(val) && val.length == 1 && _.isArray(val[0]);
 	}
 
-	function subsetOfArguments(index, arguments) {
+	function subsetOfArguments(index, paramArguments) {
 		var arr = [];
-		for(var i = index; i < arguments.length; i++) {
-			arr.push(arguments[i]);
+		for(var i = index; i < paramArguments.length; i++) {
+			var currentParam = paramArguments[i]
+			if(_.isObject(currentParam))
+				arr.push(currentParam);
 		}
-		return out;
+		return arr;
+	}
+
+	function arrayCascade(template, arrayOfModels) {
+		return deepcopy(template);
+	}
+
+	function objectCascade(template, arrayOfModels) {
+		return deepcopy(template);
 	}
 
 }).call(this);
