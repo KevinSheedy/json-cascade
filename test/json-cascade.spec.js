@@ -91,7 +91,7 @@ describe('jsonCascade complex objects', function(){
 
 	var actual, expected, template, lowPrecedence, midPrecedence, highPrecedence;
 
-	it('should override the template with the highest precedence diff', function() {
+	it('should override the complex template including nested arrays and loops', function() {
 		template = {
 			customerId: -1,
 			firstname: '',
@@ -185,7 +185,7 @@ describe('jsonCascade complex objects', function(){
 			relatedCustomerIds: [1000005, 1000006],
 			homeAddress : {
 				addressLine1: '10 Downing Street',
-				addressLine2: '1600 Pennsylvania Avenue NW',
+				addressLine2: null,
 				addressLine3: 'Washington DC',
 				country: ''
 			},

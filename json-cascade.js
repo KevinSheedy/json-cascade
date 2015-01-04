@@ -98,7 +98,11 @@
 				out[key] = pickHighestPrecedenceArray(key, template, models);
 			else if(isArrayTemplate(val)) {
 				var subModels = pickArrayVals(key, models);
-				out[key] = arrayCascade(val, subModels);
+				out[key] = arrayCascade(val[0], subModels);
+			}
+			else if(_.isObject(val)) {
+				var subModels = pickExistingObjects(key, models);
+				out[key] = objectCascade(val, subModels);
 			}
 		}
 
@@ -147,6 +151,18 @@
 			if(_.isObject(val))
 				out.push(val);
 		}
+		return out;
+	}
+
+	function pickExistingObjects(key, models) {
+		var out = [];
+
+		for(var i=0; i<models.length; i++) {
+			var model = models[i];
+			if(_.isObject(model[key]))
+				out.push(model[key]);
+		}
+
 		return out;
 	}
 
