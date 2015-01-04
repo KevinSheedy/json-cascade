@@ -64,7 +64,30 @@ describe('jsonCascade simple objects', function(){
 
 })
 
-describe('jsonCascade simple objects', function(){
+
+describe('jsonCascade arrays', function(){
+
+	var actual, expected, template, lowPrecedence, midPrecedence, highPrecedence;
+
+
+
+	it('should return an empty array when the template is an empty array', function(){
+		expect( jsonCascade([]) ).toEqual( [] );
+	})
+
+
+
+	it('should return just the template if the template is the only param', function() {
+		template = [{foo: ''}];
+		diff = [{}, {foo: 'bar'}, {foo: 'bar', lorem: 'ipsum'}];
+		actual = jsonCascade(template, diff);
+		expected = [{foo: ''}, {foo: 'bar'}, {foo: 'bar'}];
+		expect( actual ).toEqual( expected );
+	})
+
+});
+
+describe('jsonCascade complex objects', function(){
 
 	var actual, expected, template, lowPrecedence, midPrecedence, highPrecedence;
 

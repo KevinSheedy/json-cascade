@@ -18,6 +18,9 @@
 		if(!_.isObject(template))
 			return {};
 
+		if(isArrayTemplate(template))
+			return arrayCascade(template[0], models);
+
 		if(_.isArray(template))
 			return [];
 
@@ -135,8 +138,50 @@
 		return arr;
 	}
 
-	function arrayCascade() {
+	function pickExistingObjectsAsArray(position, arrayOfArrays) {
+		var out = [];
 
+		for(var i=0; i<arrayOfArrays.length; i++) {
+			var currentArray = arrayOfArrays[i];
+			var val = currentArray[position];
+			if(_.isObject(val))
+				out.push(val);
+		}
+		return out;
+	}
+
+	function arrayCascade(template, arrayOfArrays) {
+		var out = [];
+		arrayOfArrays = filterNonArrays(arrayOfArrays);
+		var outLen = longestArrayLength(arrayOfArrays);
+
+		for(var i=0; i<outLen; i++) {
+			var models = pickExistingObjectsAsArray(i, arrayOfArrays);
+			out[i] = objectCascade(template, models);
+		}
+
+		return out;
+	}
+
+	function filterNonArrays(arrayOfArrays) {
+		var arr = [];
+		for(var i=0; i<arrayOfArrays.length; i++) {
+			var current = arrayOfArrays[i];
+			if(_.isArray(current))
+				arr.push(current);
+		}
+		return arr;
+	}
+
+	function longestArrayLength(matrix) {
+		var max = -1;
+
+		for(var i=0; i<matrix.length; i++) {
+			var arr = matrix[i];
+			if(arr.length > max)
+				max = arr.length;
+		}
+		return max;
 	}
 
 }).call(this);
