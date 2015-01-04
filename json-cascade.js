@@ -93,8 +93,10 @@
 				out[key] = pickHighestPrecedencePrimitive(key, template, models);
 			else if(isSimpleArray(val))
 				out[key] = pickHighestPrecedenceArray(key, template, models);
-			else if(isArrayTemplate(val))
-				out[key] = arrayCascade(val, pickVals(key, models));
+			else if(isArrayTemplate(val)) {
+				var subModels = pickArrayVals(key, models);
+				out[key] = arrayCascade(val, subModels);
+			}
 		}
 
 		return out;
@@ -119,6 +121,18 @@
 				return models[i][key];
 		};
 		return template[key];
+	}
+
+	function pickArrayVals(key, models) {
+		var arr = [];
+
+		for(var i=0; i<models.length; i++) {
+			var model = models[i];
+			if(_.isArray(model[key])) {
+				arr.push(model[key]);
+			}
+		}
+		return arr;
 	}
 
 	function arrayCascade() {
