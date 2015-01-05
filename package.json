@@ -1,8 +1,8 @@
 {
   "name": "json-cascade",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "pure json cascading template library for browser or node.js",
-  "main": "index.js",
+  "main": "json-cascade.js",
   "scripts": {
     "test": "./node_modules/.bin/jasmine-node ./test",
     "browser": "phantomjs test/run-jasmine.js test/jasmine.html",
@@ -27,4 +27,8 @@
     "jasmine-node": "^1.14.5",
     "underscore": "^1.7.0"
   }
+  "files": [
+    "json-cascade.js",
+    "json-cascade-min.js"
+  ],
 }
