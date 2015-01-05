@@ -26,7 +26,7 @@
   "devDependencies": {
     "jasmine-node": "^1.14.5",
     "underscore": "^1.7.0"
-  }
+  },
   "files": [
     "json-cascade.js",
     "json-cascade-min.js"
