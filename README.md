@@ -2,7 +2,9 @@
 
 json-cascade is a pure json template(ish) library for browser or node.js. It takes several json objects and combines them to produce a single output. Like CSS, it uses cascading and precedence to determine which fields get output.
 
-	jsonCascade(template [, diff1] [, diffN])
+```javascript
+jsonCascade(template [, diff1] [, diffN])
+```
 
 ## Usage nodejs
 ```javascript
@@ -11,7 +13,7 @@ out = jsonCascade(template [, diff1] [, diffN]);
 ```
 
 ## Usage browser
-```
+```html
 <script src="underscore.js"></script>
 <script src="json-cascade.js"></script>
 
@@ -28,26 +30,31 @@ Each diff (aka model) is then applied to the template with the last diff having 
 ## Simple Example
 
 ### Template
-	{
-		customerId : null,
-		firstname : "",
-		lastname : "",
-		age : -1
-	}
+```javascript
+{
+	customerId : null,
+	firstname : "",
+	lastname : "",
+	age : -1
+}
+```
 
 ### Diff One
-
-	{
-		firstname : "John",
-		age : 32
-	}
+```json
+{
+	"firstname" : "John",
+	"age" : 32
+}
+```
 
 
 ### Diff Two
+```json
 	{
-		lastname : "Smith",
-		age : 48
+		"lastname" : "Smith",
+		"age" : 48
 	}
+```
 
 ### Output
 	{
