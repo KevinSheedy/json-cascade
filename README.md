@@ -5,8 +5,10 @@ json-cascade is a pure json template(ish) library for browser or node.js. It tak
 	jsonCascade(template [, diff1] [, diffN])
 
 ## Usage nodejs
-	jsonCascade = require('json-cascade');
-	out = jsonCascade(template [, diff1] [, diffN]);
+```javascript
+jsonCascade = require('json-cascade');
+out = jsonCascade(template [, diff1] [, diffN]);
+```
 
 ## Usage browser
 ```
