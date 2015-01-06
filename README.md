@@ -57,12 +57,14 @@ Each diff (aka model) is then applied to the template with the last diff having 
 ```
 
 ### Output
-	{
-		customerId : null,
-		firstname : "John",
-		lastname : "Smith",
-		age : 48
-	}
+```javascript
+{
+	customerId : null,
+	firstname : "John",
+	lastname : "Smith",
+	age : 48
+}
+```
 
 ## Arrays
 To output an array of objects, the template should contain an array with exactly **one object** (not a primitive). The equivalent array in the diff may then have multiple objects which will be applied in a loop. If the template array does not contain exactly one object, the array will be overridden as if it were a primitive.
@@ -72,102 +74,107 @@ To output an array of objects, the template should contain an array with exactly
 ## Complex Example
 
 ### Template
-	{
-		customerId : null,
-		firstname : "",
-		lastname : "",
-		age : -1,
-		address : {
-			line1 : "",
-			line2 : "",
-			line3 : "",
-			country : ""
-		},
-		relatedCustomers : [],
-		products : [
-			{
-				productId : -1,
-				title : "",
-				price : -1
-			}
-		]
-	}
+```javascript
+{
+	customerId : null,
+	firstname : "",
+	lastname : "",
+	age : -1,
+	address : {
+		line1 : "",
+		line2 : "",
+		line3 : "",
+		country : ""
+	},
+	relatedCustomers : [],
+	products : [
+		{
+			productId : -1,
+			title : "",
+			price : -1
+		}
+	]
+}
+```
 
 ### Diff One
-
-	{
-		firstname : "John",
-		age : 32,
-		address : {
-			line1 : "Aras An Uachtairain",
+```javascript
+{
+	firstname : "John",
+	age : 32,
+	address : {
+		line1 : "Aras An Uachtairain",
+	},
+	relatedCustomers : [2000005],
+	products : [
+		{
+			productId : 1000005,
+			title : "The Mythical Man Month",
+			price : 50
 		},
-		relatedCustomers : [2000005],
-		products : [
-			{
-				productId : 1000005,
-				title : "The Mythical Man Month",
-				price : 50
-			},
-			{
-				productId : 1000006,
-				title : "Effective Java",
-				price : 40
-			}
-		]
-	}
-
+		{
+			productId : 1000006,
+			title : "Effective Java",
+			price : 40
+		}
+	]
+}
+```
 
 ### Diff Two
-	{
-		lastname : "Smith",
-		age : 48,
-		address : {
-			line2 : "Phoenix Park",
-			country : "Ireland"
+```javascript
+{
+	lastname : "Smith",
+	age : 48,
+	address : {
+		line2 : "Phoenix Park",
+		country : "Ireland"
+	},
+	relatedCustomers : [2000008, 2000009],
+	products : [
+		{
 		},
-		relatedCustomers : [2000008, 2000009],
-		products : [
-			{
-			},
-			{
-				title : "Clean Code",
-				price : 100
-			},
-			{
-				productId : 1000009
-			}
-		]
-	}
-
+		{
+			title : "Clean Code",
+			price : 100
+		},
+		{
+			productId : 1000009
+		}
+	]
+}
+```
 
 ### Output
-	{
-		customerId : null,
-		firstname : "John",
-		lastname : "Smith",
-		age : 48,
-		address : {
-			line1 : "Aras An Uachtairain",
-			line2 : "Phoenix Park",
-			line3 : "",
-			country : "Ireland"
+```javascript
+{
+	customerId : null,
+	firstname : "John",
+	lastname : "Smith",
+	age : 48,
+	address : {
+		line1 : "Aras An Uachtairain",
+		line2 : "Phoenix Park",
+		line3 : "",
+		country : "Ireland"
+	},
+	relatedCustomers : [2000008, 2000009],
+	products : [
+		{
+			productId : -1,
+			title : "",
+			price : -1
 		},
-		relatedCustomers : [2000008, 2000009],
-		products : [
-			{
-				productId : -1,
-				title : "",
-				price : -1
-			},
-			{
-				productId : 1000006,
-				title : "Clean Code",
-				price : 100
-			},
-			{
-				productId : 1000009,
-				title : "",
-				price : -1
-			}
-		]
-	}
+		{
+			productId : 1000006,
+			title : "Clean Code",
+			price : 100
+		},
+		{
+			productId : 1000009,
+			title : "",
+			price : -1
+		}
+	]
+}
+```
