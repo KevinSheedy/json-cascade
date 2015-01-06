@@ -1,0 +1,30 @@
+{
+  "name": "json-cascade",
+  "main": "json-cascade.js",
+  "version": "1.0.3",
+  "homepage": "https://github.com/KevinSheedy/json-cascade",
+  "authors": [
+    "KevinSheedy <kevinsheedy@gmail.com>"
+  ],
+  "description": "json-cascade is a pure json template(ish) library for browser or node.js",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "json",
+    "cascade",
+    "template"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "~1.7.0"
+  }
+}
