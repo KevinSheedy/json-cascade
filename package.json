@@ -1,6 +1,6 @@
 {
   "name": "json-cascade",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "pure json cascading template library for browser or node.js",
   "main": "json-cascade.js",
   "scripts": {
@@ -30,5 +30,8 @@
   "files": [
     "json-cascade.js",
     "json-cascade-min.js"
-  ]
+  ],
+  "dependencies": {
+    "underscore": "^1.7.0"
+  }
 }
